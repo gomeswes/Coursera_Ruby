@@ -1,9 +1,14 @@
 #to update the repositories
 sudo apt-get update -y
 
+
+########GIT############
 #to install git packages
 sudo apt-get install -y git gitk git-gui
+#######################
 
+
+############RBENV#####################
 #to install helper libraries and compilers for ruby
 sudo apt-get install -y gcc build-essential libpq-dev libssl-dev libreadline-dev libsqlite3-dev zliblg-dev
 
@@ -44,7 +49,9 @@ git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-buil
 echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
 #to refresh 
 source ~/.bashrc
+#################################
 
+###############RUBY###############
 #install ruby version 2.4.2 in rbenv
 rbenv install -v 2.4.2
 
@@ -63,7 +70,7 @@ gem install rails -v 5.1.4
 
 #to refresh the rbenv gems 
 rbenv rehash
-
+##################################
 
 ############NODEJS################
 #to install helper packages for nodejs
