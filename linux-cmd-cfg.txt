@@ -1,0 +1,119 @@
+#to update the repositories
+sudo apt-get update -y
+
+#to install git packages
+sudo apt-get install -y git gitk git-gui
+
+#to install helper libraries and compilers for ruby
+sudo apt-get install -y gcc build-essential libpq-dev libssl-dev libreadline-dev libsqlite3-dev zliblg-dev
+
+#to start the rbenv installation and configuration
+git clone git://github.com/sstephenson/rebenv.git .rbenv
+
+#to create a envinronment variables in ububtu
+echo 'export RECIPEPUPPY_HOSTPORT=www.recipepuppy.com' >> ~/.bashrc
+
+#to verify if variable exported correctly
+tail ~/.bashrc
+
+#to refresh the environment variables
+source ~/.bashrc
+
+#to open the navigator using the env variable
+firefox http://$RECIPEPUPPY_HOSTPORT/ >2 /dev/null
+
+#to list rbenv files in a pretty way
+tree ~/.rbenv -L 1 (if needed execute sudo apt-get install -y tree)
+
+#to add rbenv to the environment path
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+
+#to apply changes in the ~/.bashrc
+. /.bashrc
+
+#to auto initialize rbenv
+echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+
+#to reload ~/.bashrc and execute the eval
+source ~/.bashrc
+
+#to get ruby build for rbenv
+git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+
+#to export ruby-build to path
+echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
+#to refresh 
+source ~/.bashrc
+
+#install ruby version 2.4.2 in rbenv
+rbenv install -v 2.4.2
+
+
+#set rbenv global version for the installed one
+rbenv global 2.4.2
+
+#set no document cmd for gems in the gem configuration
+echo "gem --no-document" > ~/.gemrc
+
+#to install bundler
+gem install bundler
+
+#to install rails
+gem install rails -v 5.1.4
+
+#to refresh the rbenv gems 
+rbenv rehash
+
+
+############NODEJS################
+#to install helper packages for nodejs
+sudo apt-get install -y software-properties-common python-software-properties
+
+
+#to add nodejs repository to the apt repositories
+sudo add-apt-repository ppa:chris-lea/node.js
+
+#to install nodejs
+sudo apt-get install -y nodejs
+
+
+############PHANTOMJS#############
+#to install bzip2 package
+sudo apt-get install -y bzip2
+
+#to set phantomjs variable
+export PHANTOM_JS="phantomjs-1.9.8-linux-x86-64"
+
+#to download phantomjs prebuild
+(cd ..; mkdir tmp; cd tmp)
+(sudo apt-get install -y curl)
+curl -L https://bitbucket.org/ariya/phantomjs/downloads/$PHANTOM_JS.tar.bz2 | tar xvjf -
+
+#to move phantomjs to the share folder
+sudo mv $PHANTOM_JS /usr/local/share
+
+#create soft link to phantomjs location
+sudo ln -sf /usr/local/share/$PHANTOM_JS/bin/phantomjs /usr/local/bin
+
+######################SUBLIME################
+#to download sublime text
+curl http://c758482.r82.cf2.rackcdn.com/Sublime%20Text%202.0.2%20x64.tar.bz2 | tar -xjf -
+
+#to move sublime to correct folder
+sudo mv 'Sublime Text 2' /opt/SublimeText2
+
+#to insert Sublime in the path
+echo export PATH='$PATH:/opt/SublimeText2' >> ~/.bashrc	
+
+#to relad ~/.bashrc
+source ~/.bashrc
+
+
+#test rails installation
+rails new test_install
+(cd test_install; rails s)
+firefox http://0.0.0.0:3000 2> /dev/null
+(cd test_install; sublime_text) > /dev/null
+
+
+
