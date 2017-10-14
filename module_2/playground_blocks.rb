@@ -8,19 +8,21 @@
 	end
 
 #implicit block
-def repeat_implict
+def repeat_implict(msg)
 	return "Block not given" unless block_given?
+	puts msg
 	yield
 	yield
 end
-repeat_implict { puts 'hi'}
+repeat_implict("works!") { puts 'hi'}
 
 #explicit
-def repeat_explicit(&custom_block)
+def repeat_explicit(msg, &custom_block)
 	return "No Custom Block" if custom_block.nil?
+	puts msg
 	custom_block.call
 	custom_block.call
 end
-repeat_implict do 
+repeat_explicit("mensagem") do 
 	puts "Hello"
 end
