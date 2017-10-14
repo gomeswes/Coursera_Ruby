@@ -12,3 +12,12 @@ def factorial(number = 7)
 end
 puts "Factorial of 3: #{factorial(3)}"
 puts "Default Factorial: #{factorial}"
+
+
+
+#Splat
+def mySplat(a, *b, c)
+	puts b.size
+end
+# *b receives an undefined number of parameters.
+mySplat("a", 1,2,3,3.4,-5, "c", "d")
