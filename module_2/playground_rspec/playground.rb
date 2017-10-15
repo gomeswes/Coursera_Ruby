@@ -6,11 +6,11 @@ class Calculator
 	end
 
 	def minus(a,b)
-		a+b
+		a-b
 	end
 
 	def plus(a,b)
-		a-b
+		a+b
 	end
 
 	def divide(a,b)

@@ -20,3 +20,8 @@ describe Calculator do
 		expect(@calc.multiply(2,3)).to eq 6
 	end
 end
+
+=begin
+	rspec --format documentation
+	it displays whole rspec tests titles
+=end
