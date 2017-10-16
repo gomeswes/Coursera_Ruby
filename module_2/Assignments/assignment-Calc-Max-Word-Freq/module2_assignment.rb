@@ -72,12 +72,14 @@ class Solution
   def calculate_line_with_highest_frequency
     @highest_count_across_lines = @analyzers.max {|analyzer| analyzer.highest_wf_count}.highest_wf_count
     @highest_count_words_across_lines = @analyzers.select{|analyzer| analyzer.highest_wf_count == @highest_count_across_lines}
-    @highest_count_words_across_lines = @highest_count_words_across_lines.map {|a| a.highest_wf_words}.join(' ').split
   end
 
   #* print_highest_word_frequency_across_lines() - prints the values of LineAnalyzer objects in 
   #  highest_count_words_across_lines in the specified format
   def print_highest_word_frequency_across_lines
+    @highest_count_words_across_lines.each do |analyze|
+      puts "#{analyze.highest_wf_words} (appears in line analyze.line_number)"
+    end
 
 
   end
@@ -99,4 +101,4 @@ end
 sol = Solution.new
 sol.analyze_file
 sol.calculate_line_with_highest_frequency
-p sol.highest_count_words_across_lines
+sol.print_highest_word_frequency_across_lines
