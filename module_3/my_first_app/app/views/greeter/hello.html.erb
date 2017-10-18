@@ -1,3 +1,7 @@
-<% random_names = ["Aga", "Wesley", "Sugar"] %>
-<h1>Greeter <%= random_names.sample %></h1>
-<p>The time now is <%= Time.now %></p>
+<h1>Greetings, <%= @name %></h1>
+<p>The time now is <%= formatted_time(@time) %></p>
+<p>This page has been viewed <%= @times_displayed %>time(s)</p>
+
+<p><%=link_to "Google", "http://google.com"%> </p>
+<p><%=link_to "Goodbye", greeter_bye_path %> </p> 
+\<p><%=link_to "Goodbye(url)", greeter_bye_url %> </p>
